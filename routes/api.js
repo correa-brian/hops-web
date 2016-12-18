@@ -56,6 +56,8 @@ router.post('/:resource', function(req, res,next){
     }
 
     if(resource == 'user'){
+      req.session.user = result.id
+      console.log("USER SESSION: "+JSON.stringify(req.session))
       res.json({
         confirmation: 'Success',
         result: result
