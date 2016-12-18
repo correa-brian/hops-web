@@ -1,4 +1,5 @@
 var User = require('../models/User')
+var bcrypt = require('bcrypt')
 
 module.exports = {
   get: function(params, isRaw, callback){
@@ -19,7 +20,7 @@ module.exports = {
 						callback(null, user)
 						return
 					}
-					callback(null, user)
+					callback(null, user.summary())
 				}
 			})
 			return
@@ -39,23 +40,23 @@ module.exports = {
 
 			if(callback != null){
 				if(isRaw == true){
-					callback(null, user)
+					callback(null, users)
 					return
 				}
 
 				var summaries = []
 				for (var i=0; i<users.length; i++){
 					var user = users[i]
-					summaries.push(user)
+					summaries.push(user.summary())
 				}
 				callback(null, summaries)
 			}
 		})
 	},
   post: function(params, callback){
-    // var password = params['password'] // plain text password
-    // var hashedPassword = bcrypt.hashSync(password, 10)
-    // params['password'] = hashedPassword
+  var password = params['password'] // plain text password
+  var hashedPassword = bcrypt.hashSync(password, 10)
+  params['password'] = hashedPassword
 
     User.create(params, function(err, user){
       if(err){
