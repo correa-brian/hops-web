@@ -15,9 +15,19 @@
       <input type="text" name="lastName" placeholder="Last Name" /><br />
       <input type="text" name="username" placeholder="Username" /><br />
       <input type="text" name="email" placeholder="Email" /><br />
-      <input type="text" name="password" placeholder="Password" /><br />
+      <input type="password" name="password" placeholder="Password" /><br />
       <input type="submit" value="Submit" /><br />
-
     </form>
+
+    <h2>LogOut</h2>
+    <a href="/user/logout"><button>Logout</button></a>
+
+    <h2>Login</h2>
+    <form action="/user/login" method="post">
+      <input type="text" name="email" placeholder="Email" /><br />
+      <input type="password" name="password" placeholder="Password" /><br />
+      <input type="submit" value="Submit" /><br />
+    </form>
+    
   </body>
 </html>
