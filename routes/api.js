@@ -55,7 +55,10 @@ router.post('/:resource', function(req, res,next){
       return
     }
 
-    if(resource == 'user'){
+    if(resource == 'user'){ //install cookie
+      req.session.user = result.id
+      console.log("User Session: "+JSON.stringify(req.session))
+
       res.json({
         confirmation: 'Success',
         result: result
