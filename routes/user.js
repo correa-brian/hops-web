@@ -71,6 +71,7 @@ router.post('/:action', function(req, res, next){
 	if (action == 'login'){
 		var credentials = req.body
 		var email = credentials.email.toLowerCase()
+    console.log("Credentials in login action: "+JSON.stringify(credentials))
 
 		userController.get({email: email}, true, function(err, results){
 			console.log("User ROUTER GET RESULTS:" +JSON.stringify(results))
